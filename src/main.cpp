@@ -14,9 +14,13 @@ int main(int argc, char const *argv[])
     Solver solver(M, h, dt, r);
     solver.solve();
 
-    cx_vec spsolve_vec = spsolve(solver.A, solver.b);
+    solver.A.print();
+    cout << "----" << endl;
+    solver.B.print();
 
-    cout << spsolve_vec << endl;
+    cx_vec u_next = spsolve(solver.A, solver.b);
+
+    cout << u_next << endl;
 
     return 0;
 }

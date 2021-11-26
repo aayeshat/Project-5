@@ -8,9 +8,9 @@ Solver::Solver(int M_in, double h_in, int dt_in, double r_in)
     r = r_in;
 
     build_vectors();
-    build_matrixs();
+    build_matrices();
 
-    U = cx_mat(M - 2, M - 2, fill::randu);
+    U = cx_mat(M - 2, M - 2, fill::ones);
 }
 
 void Solver::build_vectors()
@@ -29,10 +29,10 @@ void Solver::build_vectors()
     }
 }
 
-void Solver::build_matrixs()
+void Solver::build_matrices()
 {
     A = sp_cx_mat((M - 2) * (M - 2), (M - 2) * (M - 2));
-    B = cx_mat((M - 2) * (M - 2), (M - 2) * (M - 2), fill::zeros);
+    B = sp_cx_mat((M - 2) * (M - 2), (M - 2) * (M - 2));
 
     for (int i = 0; i < (M - 2) * (M - 2); i++)
     {

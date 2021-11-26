@@ -30,7 +30,7 @@ public:
   Solver(int M, double h, int dt, double r);
 
   void build_vectors();
-  void build_matrixs();
+  void build_matrices();
   void solve();
 };
 
