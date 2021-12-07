@@ -73,9 +73,9 @@ void Solver::solve()
     for (int k = 0; k < u.size(); k++)
     {
         cx_double B_tot = 0;
-        for (int s = 0; s < u.size(); s++)
+        for (int i = 0; i < u.size(); i++)
         {
-            B_tot += B.col(k)(s);
+            B_tot += B.col(k)(i);
         }
         b(k) = B_tot * u(k);
     }

@@ -1,8 +1,8 @@
 all: compile run
 
 compile:
-	c++ main.cpp solver.cpp -o main.o -std=c++11 -larmadillo
+	c++ main.cpp Schrodinger.cpp -o main.exe -std=c++11 -larmadillo
 
-run: ./main.o
+run: ./main.exe
 
 clean: rm -f *.o *~
