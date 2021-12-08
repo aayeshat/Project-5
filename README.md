@@ -1,3 +1,3 @@
 # Project-5
 
-g++ main.cpp solver.cpp -larmadillo
+g++ main.cpp schrodinger.cpp -larmadillo
