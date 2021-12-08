@@ -6,21 +6,21 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
 
-    double h = 0.005; // step size in x|y direction
+    double h = 0.005; // step-size in x-y (a random guess not sure exact value)
     int M = 1.0 / h + 1.0;
-    double T = 0.008; // total time
-    double dt = 2.5e-5;
-    double N = T / dt; // number of time steps
+    double T = 0.008; // Total-time (overall T)
+    double dt = 2.5e-5; //small time-steps
+    double N = T / dt; // No. of time steps totaltime/small time-step
 
-    int n_slits = 2; // slits 0, 1, 2 or 3
+    int n_slits = 2; // number of slits can be either 0(i think no slit), 1, 2(two slits separated by some length)
 
     double wall_thickness = 0.02;
     double wall_x_pos = 0.5;
-    double slit_size = 0.05;       // slit aperture (opening in the y-direction)
-    double slit_separation = 0.05; // length of the wall piece separating the slits
+    double slit_size = 0.05;       // size slit opening(length)
+    double slit_separation = 0.05; // distance between slits or length separating slits
 
     double v0 = 1;
-    cx_double r = cx_double(0.0, dt / (2 * h * h)); // constant
+    cx_double r = cx_double(0.0, dt / (2 * h * h)); // a constt
 
     double x_c = 0.25;
     double y_c = 0.5;
@@ -33,7 +33,7 @@ int main(int argc, char const *argv[])
     schrodinger.init(r, v0, n_slits, slit_size, slit_separation, wall_thickness, wall_x_pos);
     cx_vec u = schrodinger.initialize_internal_state(x_c, y_c, sigma_x, sigma_y, p_x, p_y);
 
-    cx_cube u_cube = schrodinger.simulate(u, N);
-    u_cube.save("../out/data.txt");
+    cx_cube u_cube = schrodinger.simulate(u, N); // actually "stimulate" here is "CrankNicolson" didnot used name  
+    u_cube.save("../out/data.txt"); // save file
     return 0;
 }

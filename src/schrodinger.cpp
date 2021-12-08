@@ -78,7 +78,7 @@ void Schrodinger::matrix(cx_double r)
     A.diag(0) = a;
     B.diag(0) = b;
 
-    // Fill the diagonals
+    // Fill the diagonals according to text
     A.diag(1).fill(-r);
     A.diag(-1).fill(-r);
 
