@@ -31,7 +31,7 @@ mat Schrodinger::potential(double v0, int n_slits, double slit_height, double sl
     int slit_dy_index = slit_height / h;
     int slit_sep_index = slit_separation / h;
 
-    // in y-direction the slits are alligned. Idea is to keep length or height same as above of uppermost slit and bottom of  last slit 
+    // in y-direction the slits are alligned. Idea is to keep length or height same as above of uppermost slit and bottom of  last slit
     double top_slit_y = 1.0 / 2.0 - n_slits / 2.0 * slit_height - (n_slits - 1.0) / 2.0 * slit_separation;
     int top_slit_index = top_slit_y * 1.0 / h;
 
@@ -39,7 +39,7 @@ mat Schrodinger::potential(double v0, int n_slits, double slit_height, double sl
 
     for (int i = wall_x_index; i < (wall_dx_index + wall_x_index); ++i)
     {
-        // 
+        //
         V.submat(i, 0, i, M - 1).fill(v0);
 
         for (int j = 0; j < n_slits; ++j)
@@ -111,7 +111,7 @@ cx_vec Schrodinger::initialize_internal_state(double x_c, double y_c, double sig
     mat x(M - 2, M - 2, fill::zeros);
     mat y(M - 2, M - 2, fill::zeros);
 
-    // loops over x and y 
+    // loops over x and y
 
     for (int j{0}; j < M - 2; ++j)
     {
@@ -131,6 +131,11 @@ cx_vec Schrodinger::initialize_internal_state(double x_c, double y_c, double sig
     cx_vec u_vec_conj = conj(u_vec);
 
     double norm_const = sqrt(sum(u_vec % u_vec_conj).real());
+
+    //test
+    // u_vec = u_vec / norm_const;
+    // u_vec_conj  = conj(u_vec);
+    // cout << sum(u_vec % u_vec_conj) << endl; //=(1,0)
 
     return u_vec / norm_const;
 }
@@ -156,6 +161,7 @@ cx_cube Schrodinger::simulate(cx_vec u, int N)
             }
         }
     }
+
 
     return U_cube;
 }

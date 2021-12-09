@@ -35,6 +35,8 @@ int main(int argc, char const *argv[])
 
     cx_cube u_cube = schrodinger.simulate(u, N); // actually "stimulate" here is "CrankNicolson" did not used name
 
-    u_cube.save("../out/data_slits_" + to_string(n_slits) + "_v" + to_string((int)v0) + ".bin"); // save file
+    //u_cube.save("../out/data_slits_" + to_string(n_slits) + "_v" + to_string((int)v0) + ".bin"); // save file
+    u_cube.save("../out/T_0002.bin"); // save file
+
     return 0;
 }
