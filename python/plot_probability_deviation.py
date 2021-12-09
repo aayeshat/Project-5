@@ -9,7 +9,7 @@ mpl.rcParams["axes.labelsize"] = 14
 mpl.rcParams["xtick.labelsize"] = 12
 mpl.rcParams["ytick.labelsize"] = 12
 mpl.rcParams["legend.fontsize"] = 7.5
-plt.rcParams["figure.figsize"] = (7, 5)
+plt.rcParams["figure.figsize"] = (8, 5)
 
 n_slits = 2
 
