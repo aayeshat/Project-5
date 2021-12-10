@@ -1,8 +1,17 @@
 import numpy as np
 import matplotlib
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import pyarma as pa
+
+mpl.rcParams["axes.titlesize"] = 16
+mpl.rcParams["axes.labelsize"] = 14
+mpl.rcParams["xtick.labelsize"] = 12
+mpl.rcParams["ytick.labelsize"] = 12
+mpl.rcParams["legend.fontsize"] = 7.5
+plt.rcParams["figure.figsize"] = (8, 5)
+
 
 h = 0.005
 M = int(1.0/h + 1.0)
@@ -42,46 +51,80 @@ for i in range(M-2):
         p_0002[i, j] = (np.conj(U_cube[i, j, N-1])*U_cube[i, j, N-1]).real
 
 
-fig = plt.figure(figsize = (8,6))
-
-p = [p_0, p_0001, p_0002]
-p_title = ["$p_0$", "$p_{0001}$", "$p_{0002}$"]
-
-U_Re = [U_0_Re, U_0001_Re, U_0002_Re]
-U_Re_title = ["Re($U_0$)", "Re($U_{0001}$)", "Re($U_{0002}$)"]
-
-U_Im = [U_0_Im, U_0001_Im, U_0002_Im]
-U_Im_title = ["Im($U_0$)", "Im($U_{0001}$)", "Im($U_{0002}$)"]
-
 slice = 0.8
 x = np.linspace(0+h, 1-h, M-2)
 #print(len(p_0002[int(x*(M-2)), :]))
 
+plt.figure()
 plt.imshow(p_0)
+plt.title("Colormap ")
+plt.xlabel("X")
+plt.ylabel("Y")
 plt.show()
-plt.imshow(p_0001)
-plt.show()
-plt.imshow(p_0002)
-plt.show()
-plt.imshow(U_0002_Im)
-plt.show()
-plt.imshow(U_0002_Re)
-plt.show()
+plt.savefig("../out/plot_colormap_p_0.pdf")
 
+plt.figure()
+plt.imshow(p_0001)
+plt.title("Colormap ")
+plt.xlabel("X")
+plt.ylabel("Y")
+plt.show()
+plt.savefig("../out/plot_colormap_p_0001.pdf")
+
+plt.figure()
+plt.imshow(p_0002)
+plt.title("Colormap ")
+plt.xlabel("X")
+plt.ylabel("Y")
+plt.show()
+plt.savefig("../out/plot_colormap_p_0002.pdf")
+
+plt.figure()
+plt.imshow(U_0002_Im)
+plt.title("Colormap ")
+plt.xlabel("X")
+plt.ylabel("Y")
+plt.show()
+plt.savefig("../out/plot_colormap_U_0002_Im.pdf")
+
+plt.figure()
+plt.imshow(U_0002_Re)
+plt.title("Colormap ")
+plt.xlabel("X")
+plt.ylabel("Y")
+plt.show()
+plt.savefig("../out/plot_colormap_U_0002_Re.pdf")
+
+
+plt.figure()
 plt.plot(x, p_0[:,int(slice*(M-2))], label = "t = 0.0")
 plt.plot(x, p_0001[:,int(slice*(M-2))], label = "t = 0.001")
 plt.plot(x, p_0002[:,int(slice*(M-2))], label = "t = 0.002")
+plt.title("Probability time evolution")
+plt.xlabel("X")
+plt.ylabel("Y")
 plt.legend()
 plt.show()
-# #plt.savefig("../out/plot_probability_time_evolution.pdf")
+plt.savefig("../out/plot_probability_time_evolution1.pdf")
 
-
+plt.figure()
 plt.plot(x, U_0_Im[:,int(slice*(M-2))], label = "t = 0.0")
 plt.plot(x, U_0001_Im[:,int(slice*(M-2))], label = "t = 0.001")
 plt.plot(x, U_0002_Im[int(slice*(M-2)), :], label = "t = 0.002")
+plt.title("Probability time evolution")
+plt.xlabel("X")
+plt.ylabel("Y")
+plt.legend()
 plt.show()
+plt.savefig("../out/plot_probability_time_evolution2.pdf")
 
+plt.figure()
 plt.plot(x, U_0_Re[:,int(slice*(M-2))], label = "t = 0.0")
 plt.plot(x, U_0001_Re[:,int(slice*(M-2))], label = "t = 0.001")
 plt.plot(x, U_0002_Re[:,int(slice*(M-2))], label = "t = 0.002")
+plt.title("Probability time evolution")
+plt.xlabel("X")
+plt.ylabel("Y")
+plt.legend()
 plt.show()
+plt.savefig("../out/plot_probability_time_evolution3.pdf")
