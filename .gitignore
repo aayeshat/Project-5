@@ -33,3 +33,5 @@
 
 # data_files
 *.bin
+*.pdf
+*.pgf
