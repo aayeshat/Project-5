@@ -35,6 +35,7 @@
 *.bin
 *.pdf
 *.pgf
+*.png
 
 # DS_store
 *.DS_Store
