@@ -6,19 +6,20 @@ import pyarma as pa
 
 mpl.rcParams["axes.titlesize"] = 16
 mpl.rcParams["axes.labelsize"] = 14
-mpl.rcParams["xtick.labelsize"] = 12
-mpl.rcParams["ytick.labelsize"] = 12
-mpl.rcParams["legend.fontsize"] = 7.5
-plt.rcParams["figure.figsize"] = (8, 5)
+mpl.rcParams["xtick.labelsize"] = 14
+mpl.rcParams["ytick.labelsize"] = 14
+mpl.rcParams["legend.fontsize"] = 14
+mpl.rcParams.update({'figure.autolayout': True})
 
-n_slits = 2
+# 1 or 2
+n_slits = 1
 
 U_cube_0_arma = pa.cx_cube()
-U_cube_0_arma.load("../out/data_slits_" + str(n_slits) + "_v0.bin")
+U_cube_0_arma.load("../out/data/data_slits_" + str(n_slits) + "_v0_0.bin")
 U_cube_0 = np.transpose(U_cube_0_arma)
 
 U_cube_10_arma = pa.cx_cube()
-U_cube_10_arma.load("../out/data_slits_" + str(n_slits) + "_v-2147483648.bin")
+U_cube_10_arma.load("../out/data/data_slits_" + str(n_slits) + "_v0_1e10.bin")
 U_cube_10 = np.transpose(U_cube_10_arma)
 
 h = 0.005
@@ -40,16 +41,16 @@ for n in range(N):
     p_0_array[n] = p_0
     p_10_array[n] = p_10
 
-
-
 plt.plot(t, abs(1 - p_0_array), ".", label = "v0 = 0")
 plt.plot(t, abs(1 - p_10_array), ".", label = "v0 = 1e10")
 
-plt.title("Deviation probability function of time")
+#plt.title("Deviation probability function of time")
 plt.xlabel("Time")
 plt.ylabel("|1 - $\sum_{i, j}\ p_{ij}$|")
 plt.yscale("log")
 
 plt.legend()
 plt.grid(linestyle = '--', linewidth = 0.2)
-plt.savefig("../out/plot_probability_deviation.pdf")
+plt.savefig("../out/plots/prob_deviation_nslit" + str(n_slits) + ".pdf")
+plt.savefig("../out/plots/prob_deviation_nslit" + str(n_slits) + ".pgf")
+plt.show()
