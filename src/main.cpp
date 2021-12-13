@@ -12,15 +12,15 @@ int main(int argc, char const *argv[])
     double dt = 2.5e-5; //small time-steps
     double N = T / dt;  // No. of time steps totaltime/small time-step
 
-    int n_slits = 2; // number of slits can be either 0(i think no slit), 1, 2(two slits separated by some length)
+    int n_slits = 2; // number of slits
 
     double wall_thickness = 0.02;
     double wall_x_pos = 0.5;
-    double slit_size = 0.05;       // size slit opening(length)
+    double slit_size = 0.05;       // size slit opening (y-length)
     double slit_separation = 0.05; // distance between slits or length separating slits
 
     double v0 = 1e10;
-    cx_double r = cx_double(0.0, dt / (2 * h * h)); // a constt
+    cx_double r = cx_double(0.0, dt / (2 * h * h)); // a const
 
     double x_c = 0.25;
     double y_c = 0.5;
@@ -35,8 +35,10 @@ int main(int argc, char const *argv[])
 
     cx_cube u_cube = schrodinger.simulate(u, N); // actually "stimulate" here is "CrankNicolson" did not used name
 
-    //u_cube.save("../out/data_slits_" + to_string(n_slits) + "_v" + to_string((int)v0) + ".bin"); // save file
-    u_cube.save("../out/T_0002.bin"); // save file
+    // "0" or "1e10"
+    string v0_string = "1e10";
+
+    u_cube.save("../out/data/data_slits_" + to_string(n_slits) + "_v0_" + v0_string + ".bin");
 
     return 0;
 }
