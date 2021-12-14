@@ -112,7 +112,7 @@ void Schrodinger::matrix(cx_double r){
 }
 
 //Function to initialize the internal state with a Gaussian wavepacket.
-//The function returns normalized internal u-vectors
+//The function returns normalized internal u-vector
 
 cx_vec Schrodinger::initialize_internal_state(double x_c, double y_c, double sigma_x, double sigma_y, double p_x, double p_y){
     mat x(M - 2, M - 2, fill::zeros);
@@ -137,7 +137,7 @@ cx_vec Schrodinger::initialize_internal_state(double x_c, double y_c, double sig
     return u_vec / norm_const;
 }
 
-//Function to solve the Crank-Nicolson matrix equations to evolve the system in time, i.e. find u for the next time step 
+//Function to solve the Crank-Nicolson matrix equations to evolve the system in time, i.e. find u for the next time step
 
 cx_cube Schrodinger::crank_nicolson(cx_vec u, int N){
     cx_vec b = cx_vec(u.size());
