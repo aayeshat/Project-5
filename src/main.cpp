@@ -34,7 +34,7 @@ int main(int argc, char const *argv[])
     schrodinger.init(r, v0, n_slits, slit_size, slit_separation, wall_thickness, wall_x_pos);
     cx_vec u = schrodinger.initialize_internal_state(x_c, y_c, sigma_x, sigma_y, p_x, p_y);
 
-    cx_cube u_cube = schrodinger.crank_nicolson(u, N);
+    cx_cube u_cube = schrodinger.crank_nicolson(u, N); //stimulate crank nicolsongit
 
     // "0" or "1e10"
     string v0_string = "1e10";
