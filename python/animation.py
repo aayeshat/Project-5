@@ -11,11 +11,11 @@ T = 0.008
 dt = 2.5e-5
 N = int(T/dt)
 
-plt.rcParams['animation.ffmpeg_path'] = '/Users/canae/opt/anaconda3/bin/ffmpeg'
+#plt.rcParams['animation.ffmpeg_path'] = '/Users/canae/opt/anaconda3/bin/ffmpeg'
 
 # Set up formatting for the movie files
-Writer = animation.writers['ffmpeg']
-writer = Writer(fps=15, metadata=dict(artist='Me'), bitrate=1800)
+#Writer = animation.writers['ffmpeg']
+#writer = Writer(fps=15, metadata=dict(artist='Me'), bitrate=1800)
 
     U_cube_T = pa.cx_cube()
     U_cube_T.load("../out/data/data_slits_2_v0_1e10.bin")
@@ -91,14 +91,13 @@ writer = Writer(fps=15, metadata=dict(artist='Me'), bitrate=1800)
     # writervideo = animation.FFMpegWriter(fps=60)
     # anim.save(f, writer=writervideo)
 
-    # anim.save('../out/plots/animation.gif', writer="ffmpeg", bitrate=-1, fps=30)
+    anim.save('../out/plots/animation.gif', writer="ffmpeg", bitrate=-1, fps=30)
     #
     # f = '../out/plots/animation.gif'
     # writergif = anim.PillowWriter(fps=30)
     # anim.save(f, writer=writergif)
 
-
-    #plt.show()
+    plt.show()
 
     # writergif = animation.Pillow(bitrate = -1, fps=30)
     # anim.save('../out/plots/animation.gif',writer=writergif)
