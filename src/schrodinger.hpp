@@ -36,20 +36,11 @@ public:
 
   void matrix(cx_double r);
 
-  cx_vec u_mat_to_vec(const cx_mat &u) const
-  {
-    cx_vec u_vec((M - 2) * (M - 2), fill::zeros);
-    int col_len = M - 2;
-    for (int i = 0; i < M - 2; ++i)
-    {
-      u_vec.subvec(col_len * i, col_len * (i + 1) - 1) = u.col(i);
-    }
-    return u_vec;
-  }
+  cx_vec u_mat_to_vec(cx_mat u);
 
   cx_vec initialize_internal_state(double x_c, double y_c, double sigma_x, double sigma_y, double p_x, double p_y);
 
-  cx_cube simulate(cx_vec u, int N);
+  cx_cube crank_nicolson(cx_vec u, int N);
 };
 
 #endif
