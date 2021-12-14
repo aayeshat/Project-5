@@ -11,6 +11,7 @@ mpl.rcParams["xtick.labelsize"] = 14
 mpl.rcParams["ytick.labelsize"] = 14
 mpl.rcParams["legend.fontsize"] = 12
 mpl.rcParams.update({'figure.autolayout': True})
+plt.rcParams["figure.figsize"] = (3.9, 2.6)
 
 h = 0.005
 M = int(1.0/h + 1.0)
@@ -19,10 +20,12 @@ dt = 2.5e-5
 N = int(T/dt)
 
 n_slits = "_3_slits"
+#n_slits = "_2_slits"
+#n_slits = "_1_slit"
 
 U_cube_T = pa.cx_cube()
 U_cube_T.load("../out/data/data_slits_3.bin")
-#U_cube_T.load("../out/data/data_slits_1.bin")
+#U_cube_T.load("../out/data/data_slits_1_v0_1e10.bin")
 #U_cube_T.load("../out/data/T_0002.bin")
 U_cube = np.transpose(U_cube_T)
 

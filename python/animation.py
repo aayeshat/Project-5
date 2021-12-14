@@ -17,20 +17,22 @@ N = int(T/dt)
 #Writer = animation.writers['ffmpeg']
 #writer = Writer(fps=15, metadata=dict(artist='Me'), bitrate=1800)
 
-    U_cube_T = pa.cx_cube()
-    U_cube_T.load("../out/data/data_slits_2_v0_1e10.bin")
-    U_cube = np.transpose(U_cube_T)
+plt.rcParams.update({'figure.max_open_warning': 0})
 
-    x_points = np.arange(0, 1+h, h);
-    y_points = np.arange(0, 1+h, h);
-    x, y = np.meshgrid(x_points, y_points, sparse = True)
+U_cube_T = pa.cx_cube()
+U_cube_T.load("../out/data/data_slits_2_v0_1e10.bin")
+U_cube = np.transpose(U_cube_T)
 
-    t_points = np.arange(0, 1+dt, dt)
+x_points = np.arange(0, 1+h, h);
+y_points = np.arange(0, 1+h, h);
+x, y = np.meshgrid(x_points, y_points, sparse = True)
 
-    p_data_list = []
-    for n in range(N):
-        p_data = np.real(np.conj(U_cube[:, :, n])*U_cube[:, :, n])
-        p_data_list.append(p_data)
+t_points = np.arange(0, 1+dt, dt)
+
+p_data_list = []
+for n in range(N):
+    p_data = np.real(np.conj(U_cube[:, :, n])*U_cube[:, :, n])
+    p_data_list.append(p_data)
 
 
     fontsize = 14
@@ -61,7 +63,7 @@ N = int(T/dt)
 
     # Add a text element showing the time
     time_txt = plt.text(0.95, 0.95, "t = {:.3e}".format(t_min), color="white",
-                        horizontalalignment="right", verticalalignment="top", fontsize=fontsize)
+    horizontalalignment="right", verticalalignment="top", fontsize=fontsize)
 
     # Function that takes care of updating the z data and other things for each frame
     def animation(i):
@@ -78,26 +80,28 @@ N = int(T/dt)
 
         return img
 
-    # Use matplotlib.animation.FuncAnimation to put it all together
-    anim = FuncAnimation(fig, animation, interval=1, frames=np.arange(0, len(p_data_list), 2), repeat=False, blit=0)
+        # Use matplotlib.animation.FuncAnimation to put it all together
+        anim = FuncAnimation(fig, animation, interval=1, frames=np.arange(0, len(p_data_list), 2), repeat=False, blit=0)
 
-    # Run the animation!
-    #plt.show()
+        # Run the animation!
+        plt.show()
 
-    # # Save the animation
-    # anim.save('../out/plots/animation.mp4', writer=writer)
+        # # Save the animation
+        # anim.save('../out/plots/animation.mp4', writer=writer)
 
-    # f = '../out/plots/animation.mp4'
-    # writervideo = animation.FFMpegWriter(fps=60)
-    # anim.save(f, writer=writervideo)
+        # f = '../out/plots/animation.mp4'
+        # writervideo = animation.FFMpegWriter(fps=60)
+        # anim.save(f, writer=writervideo)
 
-    anim.save('../out/plots/animation.gif', writer="ffmpeg", bitrate=-1, fps=30)
-    #
-    # f = '../out/plots/animation.gif'
-    # writergif = anim.PillowWriter(fps=30)
-    # anim.save(f, writer=writergif)
+        #anim.save('../out/plots/animation.gif', writer="ffmpeg", bitrate=-1, fps=30)
+        #anim.save('../out/plots/animation.mp4', writer="imagemagick", bitrate=-1, fps=30)
+        #
+        # f = '../out/plots/animation.gif'
+        # writergif = anim.PillowWriter(fps=30)
+        # anim.save(f, writer=writergif)
 
-    plt.show()
+        #plt.show()
 
-    # writergif = animation.Pillow(bitrate = -1, fps=30)
-    # anim.save('../out/plots/animation.gif',writer=writergif)
+
+        # writergif = animation.Pillow(bitrate = -1, fps=30)
+        # anim.save('../out/plots/animation.gif',writer=writergif)

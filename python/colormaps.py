@@ -10,7 +10,8 @@ mpl.rcParams["axes.labelsize"] = 16
 mpl.rcParams["xtick.labelsize"] = 10
 mpl.rcParams["ytick.labelsize"] = 10
 mpl.rcParams["legend.fontsize"] = 12
-plt.rcParams["figure.figsize"] = (6.9, 2.5)
+#mpl.rcParams.update({'figure.autolayout': True})
+plt.rcParams["figure.figsize"] = (6.9, 3)
 
 
 h = 0.005
