@@ -10,10 +10,10 @@ mpl.rcParams["xtick.labelsize"] = 14
 mpl.rcParams["ytick.labelsize"] = 14
 mpl.rcParams["legend.fontsize"] = 14
 mpl.rcParams.update({'figure.autolayout': True})
-plt.rcParams["figure.figsize"] = (5, 4)
+plt.rcParams["figure.figsize"] = (4.5, 3.5)
 
 # 0 or 2
-n_slits = 0
+n_slits = 2
 
 U_cube_0_arma = pa.cx_cube()
 U_cube_0_arma.load("../out/data/data_slits_" + str(n_slits) + "_v0_0.bin")
@@ -42,16 +42,17 @@ for n in range(N):
     p_0_array[n] = p_0
     p_10_array[n] = p_10
 
-plt.plot(t, abs(1 - p_0_array), ".", label = "v0 = 0")
-plt.plot(t, abs(1 - p_10_array), ".", label = "v0 = 1e10")
+plt.plot(t, abs(1 - p_0_array), ".", label = "$v_0 = 0$")
+plt.plot(t, abs(1 - p_10_array), ".", label = "$v_0 = 10^{10}$")
 
 #plt.title("Deviation probability function of time")
 plt.xlabel("Time")
+plt.ticklabel_format(axis="x", style="sci", scilimits=(0,0))
 plt.ylabel("|1 - $\sum_{i, j}\ p_{ij}$|")
 plt.yscale("log")
 
 plt.legend()
 plt.grid(linestyle = '--', linewidth = 0.2)
-plt.savefig("../out/plots/prob_deviation_nslit" + str(n_slits) + ".pdf")
-plt.savefig("../out/plots/prob_deviation_nslit" + str(n_slits) + ".pgf")
+plt.savefig("../out/plots/2prob_deviation_nslit" + str(n_slits) + ".pdf")
+plt.savefig("../out/plots/2prob_deviation_nslit" + str(n_slits) + ".pgf")
 plt.show()

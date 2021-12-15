@@ -8,13 +8,14 @@ int main(int argc, char const *argv[])
 
     double h = 0.005; // Step-size
     int M = 1.0 / h + 1.0;
-    double T = 0.008;   // Total time
+    double T = 0.002;   // Total time
     double dt = 2.5e-5; // Time steps
     double N = T / dt;  // Number of time steps
 
     //Variables to change
-    int n_slits = 2; // Number of slits; there can be 0 - 3 slits
+    int n_slits = 0; // Number of slits; there can be 0 - 3 slits
     double v0 = 1e10; //Initial velocity. Should not be 0 as potential barrier V is dependent on v0
+    string str_v0 = "1e10"; //For filename. 0 or 1e10
 
     double wall_thickness = 0.02;
     double wall_x_pos = 0.5;
@@ -37,7 +38,9 @@ int main(int argc, char const *argv[])
 
     cx_cube u_cube = schrodinger.crank_nicolson(u, N); //stimulate crank nicolsongit
 
-    u_cube.save("../out/data/data_slits_" + to_string(n_slits) + "_v0_" + to_string(v0) + ".bin");
+    //u_cube.save("../out/data/data_slits_" + to_string(n_slits) + "_v0_" + str_v0 + ".bin");
+
+    u_cube.save("../out/data/t2_slits_" + to_string(n_slits) + "_v0_" + str_v0 + ".bin");
     //u_cube.save("../out/data/data_slits_" + to_string(n_slits) + ".bin");
 
     return 0;
