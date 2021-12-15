@@ -15,7 +15,7 @@ g++ main.cpp schrodinger.cpp -larmadillo && ./a.out
 
 ## MacOs
 
-add compiler flag std=c++11 -larmadillo
+add compiler flags std=c++11 -larmadillo
 
 ------
 
