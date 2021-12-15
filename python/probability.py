@@ -62,6 +62,13 @@ fig1 = ax[0].plot(y, p1[:,int(slice*(M-2))]/(sum(p1[:,int(slice*(M-2))])))
 fig2 = ax[1].plot(y, p2[:,int(slice*(M-2))]/(sum(p2[:,int(slice*(M-2))])))
 fig3 = ax[2].plot(y, p3[:,int(slice*(M-2))]/(sum(p3[:,int(slice*(M-2))])))
 
+test_prob = np.trapz(abs(p1[:,int(slice*(M-2))]/(sum(p1[:,int(slice*(M-2))]))))
+print(1-test_prob)
+test2 = np.trapz(abs(p2[:,int(slice*(M-2))]/(sum(p2[:,int(slice*(M-2))]))))
+print(1-test2)
+test3 = np.trapz(abs(p3[:,int(slice*(M-2))]/(sum(p3[:,int(slice*(M-2))]))))
+print(1-test3)
+
 # for axs in ax.flat:
 #     axs.set(xlabel="$y$", ylabel="$p(y | x = 0.8; t = 0.002)$")
 
@@ -77,9 +84,6 @@ for fig, ax in zip(ax, ["(a)", "(b)", "(c)"]):
     t.patch.set_ec("none")
     t.patch.set_alpha(0.5)
 
-#plt.figure()
-#plt.plot(y, p_0002[:,int(slice*(M-2))]/(sum(p_0002[:,int(slice*(M-2))])))
-#plt.xlabel("$y$")
-#plt.ylabel("$p(y | x = 0.8; t = 0.002)$")
-plt.savefig("../out/plots/probability3.pgf")
-plt.show()
+
+# plt.savefig("../out/plots/probability3.pgf")
+# plt.show()

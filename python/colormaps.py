@@ -22,12 +22,14 @@ N = int(T/dt)
 slice = 0.8
 y = np.linspace(0+h, 1-h, M-2)
 
-n_slits = "_2_slits"
+#File name dependent. Change according to loaded file.
+n_slits = 0
 
 U_cube_T = pa.cx_cube()
-U_cube_T.load("../out/data/t_0002.bin")
-#U_cube_T.load("../out/data/data_slits_1.bin")
-#U_cube_T.load("../out/data/T_0002.bin")
+U_cube_T.load("../out/data/t2_slits_0_v0_1e10.bin")
+#U_cube_T.load("../out/data/t2_slits_3_v0_1e10.bin")
+#U_cube_T.load("../out/data/t2_slits_1_v0_1e10.bin")
+#U_cube_T.load("../out/data/T_0002.bin") ## double slit
 U_cube = np.transpose(U_cube_T)
 
 U_0_Re = np.zeros((M-2, M-2))
@@ -97,8 +99,8 @@ for fig, ax in zip(ax, ["(a) t = 0", "(b) t = 0.001 ", "(c) t = 0.002"]):
     t.patch.set_ec("none")
     t.patch.set_alpha(0.5)
 
-plt.savefig("../out/plots/colormap_p" + n_slits + ".pdf")
-plt.savefig("../out/plots/colormap_p" + n_slits + ".pgf")
+plt.savefig("../out/plots/colormap_p" + str(n_slits) + ".pdf")
+plt.savefig("../out/plots/colormap_p" + str(n_slits) + ".pgf")
 plt.show()
 
 #Colormap for Re(Uij)
@@ -130,8 +132,8 @@ for fig, ax in zip(ax, ["(a) t = 0", "(b) t = 0.001 ", "(c) t = 0.002"]):
     t.patch.set_ec("none")
     t.patch.set_alpha(0.5)
 
-plt.savefig("../out/plots/colormap_Re_u" + n_slits + ".pdf")
-plt.savefig("../out/plots/colormap_Re_u" + n_slits + ".pgf")
+plt.savefig("../out/plots/colormap_Re_u" + str(n_slits) + ".pdf")
+plt.savefig("../out/plots/colormap_Re_u" + str(n_slits) + ".pgf")
 plt.show()
 
 #Colormap for Im(Uij)
@@ -163,8 +165,8 @@ for fig, ax in zip(ax, ["(a) t = 0", "(b) t = 0.001 ", "(c) t = 0.002"]):
     t.patch.set_ec("none")
     t.patch.set_alpha(0.5)
 
-plt.savefig("../out/plots/colormap_Im_u" + n_slits + ".pdf")
-plt.savefig("../out/plots/colormap_Im_u" + n_slits + ".pgf")
+plt.savefig("../out/plots/colormap_Im_u" + str(n_slits) + ".pdf")
+plt.savefig("../out/plots/colormap_Im_u" + str(n_slits) + ".pgf")
 plt.show()
 
 
