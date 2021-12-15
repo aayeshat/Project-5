@@ -12,14 +12,15 @@ int main(int argc, char const *argv[])
     double dt = 2.5e-5; // Time steps
     double N = T / dt;  // Number of time steps
 
+    //Variables to change
     int n_slits = 2; // Number of slits; there can be 0 - 3 slits
+    double v0 = 1e10; //Initial velocity. Should not be 0 as potential barrier V is dependent on v0
 
     double wall_thickness = 0.02;
     double wall_x_pos = 0.5;
     double slit_size = 0.05;
     double slit_separation = 0.05;
 
-    double v0 = 1e10;
     cx_double r = cx_double(0.0, dt / (2 * h * h)); // idt/d^2h in Crank-Nicolson scheme
 
     //Arguments for wavepacket
@@ -36,10 +37,7 @@ int main(int argc, char const *argv[])
 
     cx_cube u_cube = schrodinger.crank_nicolson(u, N); //stimulate crank nicolsongit
 
-    // "0" or "1e10"
-    string v0_string = "1e10";
-
-    //u_cube.save("../out/data/data_slits_" + to_string(n_slits) + "_v0_" + v0_string + ".bin");
+    u_cube.save("../out/data/data_slits_" + to_string(n_slits) + "_v0_" + to_string(v0) + ".bin");
     //u_cube.save("../out/data/data_slits_" + to_string(n_slits) + ".bin");
 
     return 0;

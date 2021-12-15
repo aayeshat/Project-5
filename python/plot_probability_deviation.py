@@ -12,8 +12,8 @@ mpl.rcParams["legend.fontsize"] = 14
 mpl.rcParams.update({'figure.autolayout': True})
 plt.rcParams["figure.figsize"] = (5, 4)
 
-# 1 or 2
-n_slits = 2
+# 0 or 2
+n_slits = 0
 
 U_cube_0_arma = pa.cx_cube()
 U_cube_0_arma.load("../out/data/data_slits_" + str(n_slits) + "_v0_0.bin")
