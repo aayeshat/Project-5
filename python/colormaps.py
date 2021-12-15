@@ -19,6 +19,8 @@ M = int(1.0/h + 1.0)
 T = 0.002
 dt = 2.5e-5
 N = int(T/dt)
+slice = 0.8
+y = np.linspace(0+h, 1-h, M-2)
 
 n_slits = "_2_slits"
 
@@ -65,9 +67,6 @@ def add_inner_title(ax, title, loc, **kwargs):
                       frameon=False, **kwargs)
     ax.add_artist(at)
     return at
-
-slice = 0.8
-y = np.linspace(0+h, 1-h, M-2)
 
 #Colormap for p
 
