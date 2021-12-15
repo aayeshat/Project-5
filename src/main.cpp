@@ -14,7 +14,7 @@ int main(int argc, char const *argv[])
 
     //Variables to change
     int n_slits = 0; // Number of slits; there can be 0 - 3 slits
-    double v0 = 1e10; //Initial velocity. Should not be 0 as potential barrier V is dependent on v0
+    double v0 = 1e10; //Potential for barrier
     string str_v0 = "1e10"; //For filename. 0 or 1e10
 
     double wall_thickness = 0.02;
